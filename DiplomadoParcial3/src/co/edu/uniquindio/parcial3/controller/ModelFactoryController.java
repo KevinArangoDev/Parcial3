@@ -2,8 +2,10 @@ package co.edu.uniquindio.parcial3.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniquindio.parcial3.exception.ClasePrincipalException;
 import co.edu.uniquindio.parcial3.model.Diplomado;
 import co.edu.uniquindio.parcial3.model.Estudiante;
 
@@ -12,19 +14,25 @@ public class ModelFactoryController {
 
 	//Atrinutos
 	private static ModelFactoryController instance;
-	private List<Float> listaNotasEstudiante;
+	private List<Estudiante> listaEstudiantes;
     Diplomado diplomado;
-    Estudiante estudiante;
+
 
 
     private ModelFactoryController() {
         // Constructor privado para evitar instanciación directa
 //    	listaNotasEstudiante = new List<>;
 		diplomado = new Diplomado("nombre", 10);
-		
+		listaEstudiantes = new ArrayList<>();
+		inicializarEstudiante();
+
+
     }
 
-
+    /**
+     * Instansia del model factory
+     * @return
+     */
 
 	public static ModelFactoryController getInstance() {
         if (instance == null) {
@@ -33,13 +41,17 @@ public class ModelFactoryController {
         return instance;
     }
 
-	private void inicializarEstudiante() {
+	/**
+	 * metodo que inicializa el estudiante
+	 */
 
-
-
+	public void inicializarEstudiante() {
 
     }
 
+	/**
+	 * Getters y Setters
+	 */
 
 	public  Diplomado getDiplomado() {
 		return diplomado;
@@ -51,33 +63,47 @@ public class ModelFactoryController {
 
 
 
-	public Estudiante getEstudiante() {
-		return estudiante;
-	}
-
-
-
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
-	}
-
-
-
 	public static void setInstance(ModelFactoryController instance) {
 		ModelFactoryController.instance = instance;
 	}
 
 
 
-	public List<Float> getListaNotasEstudiante() {
-		return listaNotasEstudiante;
+	public List<Estudiante> getlistaEstudiantes() {
+		return listaEstudiantes;
 	}
 
 
 
-	public void setListaNotasEstudiante(List<Float> listaNotasEstudiante) {
-		this.listaNotasEstudiante = listaNotasEstudiante;
+	public void setListaNotasEstudiante(List<Estudiante> listaEstudiantes) {
+		this.listaEstudiantes = listaEstudiantes;
 	}
+
+//----------------------------------------Metodos---------------------------------------------------
+
+	/**
+	 * Metodo Agregar estudiante
+	 * @param estudiante
+	 * @throws ClasePrincipalException
+	 */
+
+	public void agregarEstudiante(Estudiante estudiante) throws ClasePrincipalException {
+		for (Estudiante est : listaEstudiantes) {
+			if (est.getIdentificacion().equals(estudiante.getIdentificacion())) {
+				throw new ClasePrincipalException("Ya existe un estudiante con la identificación.");
+			}
+		}
+
+		listaEstudiantes.add(estudiante);
+		System.out.println("Se agregó un nuevo estudiante.");
+	}
+
+
+
+
+
+
+
 
 
 

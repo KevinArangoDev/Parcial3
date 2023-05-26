@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.parcial3.exception.ClasePrincipalException;
 import co.edu.uniquindio.parcial3.model.Estudiante;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import javafx.scene.control.TextField;
 
 public class AgregarEstudianteController implements Initializable {
 
- 		private ModelFactoryController modelFactoryController = ModelFactoryController.getInstance();
+ 		 ModelFactoryController modelFactoryController = ModelFactoryController.getInstance();
 
  		@Override
 		public void initialize(URL location, ResourceBundle resources) {
@@ -48,9 +49,15 @@ public class AgregarEstudianteController implements Initializable {
 	    @FXML
 	    private Button btnAgregarEstudiante1;
 
+	    /**
+	     * Botton que nos agrega un cliente
+	     * @param event
+	     * @throws IOException
+	     * @throws ClasePrincipalException
+	     */
 
 	    @FXML
-	    void agregarEstudiante(ActionEvent event) throws IOException {
+	    void agregarEstudiante(ActionEvent event) throws IOException, ClasePrincipalException {
 
 	    	String nombre = txtNombre.getText();
 	        String idnetificacion = txtId.getText();
@@ -61,8 +68,8 @@ public class AgregarEstudianteController implements Initializable {
 
 	        Estudiante nuevoEstudiante = new Estudiante(nombre, genero, idnetificacion);
 
-	        // Agregar el nuevo cliente a la lista de clientes en el ModelFactorySingleton
-    	    modelFactoryController.getDiplomado().getListaEstudiantes().add(nuevoEstudiante);
+	        // Agregar el nuevo estudiante a la lista de estudiante en el ModelFactorySingleton
+    	    modelFactoryController.agregarEstudiante(nuevoEstudiante);
 
     	    mostrarAlerta("Estudiante Agregado:\n\n" +
 	                  "Nombre: " + nombre + "\n" +
@@ -70,7 +77,6 @@ public class AgregarEstudianteController implements Initializable {
 	                  "Idenntificacion: " + idnetificacion);
 
 
-	        // Realizar otras operaciones necesarias con el nuevo cliente
 
 	        // Limpiar los campos de texto
     	    txtNombre.clear();

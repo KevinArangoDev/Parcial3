@@ -110,20 +110,16 @@ public class Diplomado {
 	 * @throws ClasePrincipalException
 	 */
 	public void agregarEstudiante(Estudiante estudiante) throws ClasePrincipalException {
-		int bandera = 0;
-		for (int i = 0; i < listaEstudiantes.size() && bandera == 0; i++) {
-			if (listaEstudiantes.get(i).getIdentificacion().equals(estudiante.getIdentificacion())) {
-				bandera = 1;
+		for (Estudiante est : listaEstudiantes) {
+			if (est.getIdentificacion().equals(estudiante.getIdentificacion())) {
+				throw new ClasePrincipalException("Ya existe un estudiante con la identificación.");
 			}
 		}
-		if (bandera == 0) {
-			listaEstudiantes.add(estudiante);
-			System.out.println("Se agrego un nuevo estudiante .");
-		} else {
-			throw new ClasePrincipalException("Ya existe un estudiante con la identificación.");
-		}
 
+		listaEstudiantes.add(estudiante);
+		System.out.println("Se agregó un nuevo estudiante.");
 	}
+
 
 	/**
 	 * Metodo Calcular promedii de un estudiante dada su identificación
