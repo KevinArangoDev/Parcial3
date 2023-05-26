@@ -41,5 +41,10 @@
          </cursor>
       </Button>
       <TextField fx:id="txtGenero" layoutX="211.0" layoutY="379.0" prefHeight="39.0" prefWidth="454.0" />
+      <Button fx:id="btnVolver" layoutX="51.0" layoutY="640.0" mnemonicParsing="false" onAction="#volverVentana" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: #393e46;" text="Volver" textFill="#eeeeee">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
