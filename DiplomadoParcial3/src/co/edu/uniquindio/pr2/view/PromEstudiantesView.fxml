@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="261.0" prefWidth="285.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="co.edu.uniquindio.pr2.controller.PromedioCursoController">
+   <children>
+      <Label layoutX="72.0" layoutY="14.0" text="Promedio del curso" />
+      <Label layoutX="77.0" layoutY="59.0" text="Promedio General" />
+      <TextField fx:id="txtPromGeneral" layoutX="49.0" layoutY="100.0" />
+      <Button fx:id="btnPromedio" layoutX="68.0" layoutY="141.0" mnemonicParsing="false" onAction="#obtenerPromedio" text="obtenerPromedio" />
+      <Separator layoutY="32.0" prefHeight="6.0" prefWidth="295.0" />
+      <Button fx:id="btnVolver" layoutX="115.0" layoutY="216.0" mnemonicParsing="false" onAction="#volverInicio" text="Volver" />
+   </children>
+</AnchorPane>

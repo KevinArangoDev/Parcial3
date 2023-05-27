@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="665.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.pr2.controller.ListadoEstudiantesController">
+   <children>
+      <TableView fx:id="tblEstudiantes" layoutX="47.0" layoutY="74.0" prefHeight="480.0" prefWidth="740.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="colIdentificacion" prefWidth="160.0" text="Identificacion" />
+            <TableColumn fx:id="colGenero" prefWidth="158.0" text="Genero" />
+            <TableColumn fx:id="colNotas" prefWidth="346.0" text="Notas" />
+        </columns>
+      </TableView>
+      <Label layoutX="22.0" layoutY="14.0" text="Lista Estudiantes" />
+      <Button fx:id="btnVolver" layoutX="398.0" layoutY="580.0" mnemonicParsing="false" onAction="#volverVenInicio" text="Volver" />
+   </children>
+</AnchorPane>

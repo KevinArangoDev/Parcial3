@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial3.controller.AgregarEstudianteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.pr2.controller.AgregarEstudianteController">
    <children>
       <Label layoutX="48.0" layoutY="248.0" text="Nombre:" />
       <Label layoutX="48.0" layoutY="320.0" text="Identificación:" />
@@ -35,16 +35,8 @@
       <Label layoutX="51.0" layoutY="587.0" text="Nota 3:" />
       <TextField fx:id="txtNota2" layoutX="216.0" layoutY="514.0" prefHeight="39.0" prefWidth="454.0" AnchorPane.rightAnchor="35.0" />
       <TextField fx:id="txtNota3" layoutX="221.0" layoutY="581.0" prefHeight="39.0" prefWidth="454.0" AnchorPane.rightAnchor="35.0" />
-      <Button fx:id="btnAgregarEstudiante1" layoutX="476.0" layoutY="640.0" mnemonicParsing="false" onAction="#agregarEstudiante" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: #393e46;" text="Agregar Estudiante" textFill="#eeeeee">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <TextField fx:id="txtGenero" layoutX="211.0" layoutY="379.0" prefHeight="39.0" prefWidth="454.0" />
-      <Button fx:id="btnVolver" layoutX="51.0" layoutY="640.0" mnemonicParsing="false" onAction="#volverVentana" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: #393e46;" text="Volver" textFill="#eeeeee">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <ComboBox fx:id="cmbxGenero" layoutX="211.0" layoutY="391.0" prefWidth="150.0" />
+      <Button fx:id="btnAgregarEstudiante" layoutX="253.0" layoutY="642.0" mnemonicParsing="false" onAction="#agregarEstudiante" text="agregarEstudiante" />
+      <Button fx:id="volver" layoutX="496.0" layoutY="642.0" mnemonicParsing="false" onAction="#volverVenIni" text="Volver" />
    </children>
 </AnchorPane>

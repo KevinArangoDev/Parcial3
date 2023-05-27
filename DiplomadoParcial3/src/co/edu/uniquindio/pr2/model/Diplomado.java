@@ -1,8 +1,10 @@
-package co.edu.uniquindio.parcial3.model;
+package co.edu.uniquindio.pr2.model;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.uniquindio.parcial3.exception.ClasePrincipalException;
+import co.edu.uniquindio.pr2.exception.ClasePrincipalException;
 
 
 public class Diplomado {
@@ -21,6 +23,7 @@ public class Diplomado {
 		super();
 		this.nombre = nombre;
 		this.cupo = cupo;
+		this.listaEstudiantes = new ArrayList<>();
 	}
 
     /**
@@ -105,21 +108,28 @@ public class Diplomado {
 
 	/**
 	 * metodo utilizado para agregar un estudiante
+	 * @param listaNotasEstudiante
 	 *
 	 * @param vehiculo
 	 * @throws ClasePrincipalException
 	 */
-	public void agregarEstudiante(Estudiante estudiante) throws ClasePrincipalException {
-		for (Estudiante est : listaEstudiantes) {
-			if (est.getIdentificacion().equals(estudiante.getIdentificacion())) {
-				throw new ClasePrincipalException("Ya existe un estudiante con la identificación.");
+	public void agregarEstudiante(Estudiante estudiante, List<Float> notas) throws ClasePrincipalException {
+		estudiante.agregarNotas(notas);
+
+		int bandera = 0;
+		for (int i = 0; i < listaEstudiantes.size() && bandera == 0; i++) {
+			if (listaEstudiantes.get(i).getIdentificacion().equals(estudiante.getIdentificacion())) {
+				bandera = 1;
 			}
 		}
+		if (bandera == 0) {
+			listaEstudiantes.add(estudiante);
+			System.out.println("Se agrego un nuevo estudiante .");
+		} else {
+			throw new ClasePrincipalException("Ya existe un estudiante con la identificación.");
+		}
 
-		listaEstudiantes.add(estudiante);
-		System.out.println("Se agregó un nuevo estudiante.");
 	}
-
 
 	/**
 	 * Metodo Calcular promedii de un estudiante dada su identificación
@@ -150,4 +160,30 @@ public class Diplomado {
 //            return true; // El cliente existe
 //        }
 //
+	public float getPromedioEstudiante(String identificacion) {
+	    return calcularPromEstudiante(identificacion);
+	}
+	   public float calcularPromedioCurso() {
+	       float resul=0;
+		   float sumaPromedios = 0;
+	        int totalEstudiantes = listaEstudiantes.size();
+
+	        for (Estudiante estudiante : listaEstudiantes) {
+	            List<Float> notas = estudiante.getListaNotasEstudiante();
+	            float sumaNotas = 0;
+
+	            for (float nota : notas) {
+	                sumaNotas += nota;
+	            }
+
+	            float promedioEstudiante = sumaNotas / notas.size();
+	            sumaPromedios += promedioEstudiante;
+	        }
+
+	        return resul= sumaPromedios / totalEstudiantes;
+	    }
+		public float getPromedioCurso() {
+		    return calcularPromedioCurso();
+		}
+
 }

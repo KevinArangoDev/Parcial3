@@ -1,4 +1,4 @@
-package co.edu.uniquindio.parcial3.model;
+package co.edu.uniquindio.pr2.model;
 
 public enum Genero {
 	FEMENINO, MASCULINO

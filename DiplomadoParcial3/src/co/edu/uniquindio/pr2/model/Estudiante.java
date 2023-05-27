@@ -1,12 +1,13 @@
-package co.edu.uniquindio.parcial3.model;
+package co.edu.uniquindio.pr2.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estudiante {
 
 	// Atributos
 	private String nombre;
-	private String genero;
+	private Genero genero;
 	private String identificacion;
 	private List<Float> listaNotasEstudiante;
 
@@ -14,12 +15,15 @@ public class Estudiante {
 	 * Metodo Constructor
 	 */
 
-	public Estudiante(String nombre, String genero, String identificacion) {
+	public Estudiante(String nombre, Genero genero, String identificacion) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
 		this.identificacion = identificacion;
+		this.listaNotasEstudiante = new ArrayList<>();
+
 	}
+
 
 	/**
 	 * Constructor vacio
@@ -28,6 +32,8 @@ public class Estudiante {
 	public Estudiante(){
 		super();
 	}
+
+
 
 	/**
 	 * Getter y Setters de la clase
@@ -40,13 +46,17 @@ public class Estudiante {
 		this.nombre = nombre;
 	}
 
-	public String getGenero() {
+
+
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+
 
 	public String getIdentificacion() {
 		return identificacion;
@@ -105,20 +115,28 @@ public class Estudiante {
 	 * Metodo ToString
 	 */
 
+
+
+	 public void agregarNotas(List<Float> nuevasNotas) {
+		 listaNotasEstudiante.addAll(nuevasNotas);
+	    }
+
+
 	@Override
 	public String toString() {
-		return "Estudiante [nombre=" + nombre + ", genero=" + genero + ", identificacion=" + identificacion + "]";
+		return "Estudiante [nombre=" + nombre + ", genero=" + genero + ", identificacion=" + identificacion
+				+ ", listaNotasEstudiante=" + listaNotasEstudiante + "]";
 	}
-
-
-
-
-
-
-
-
-
-
-
+	public String getNotasAsString() {
+        if (listaNotasEstudiante == null || listaNotasEstudiante.isEmpty()) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Float nota : listaNotasEstudiante) {
+            sb.append(nota).append(", ");
+        }
+        sb.setLength(sb.length() - 2); // Eliminar la última coma y espacio
+        return sb.toString();
+    }
 
 }
